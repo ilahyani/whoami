@@ -1,6 +1,6 @@
 import socketIO from "socket.io-client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Login";
+import Login from "./Login";
 import ChatPage from "./ChatPage";
 
 const socket = socketIO.connect(import.meta.env.VITE_SERVER_DOMAIN);
@@ -10,7 +10,7 @@ export default function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route path="/" element={<Home socket={socket} />}></Route>
+          <Route path="/" element={<Login socket={socket} />}></Route>
           <Route path="/Chat" element={<ChatPage socket={socket} />}></Route>
         </Routes>
       </div>
