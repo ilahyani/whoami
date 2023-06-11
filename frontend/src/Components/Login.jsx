@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../myStyle.css";
 
-export default function Home() {
+export default function Login() {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/chat");
