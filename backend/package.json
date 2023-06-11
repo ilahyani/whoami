@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.mjs",
+  "main": "src/server.mjs",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
