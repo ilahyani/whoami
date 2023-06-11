@@ -12,10 +12,9 @@ const httpServer = createServer(app);
 
 app.use(cors);
 
-const io = new Server(httpServer, { cors: "http://localhost:5173/" });
+const io = new Server(httpServer, { cors: process.env.CLIENT_DOMAIN });
 io.on("connection", (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
-  io.to(socket).emit("hello react client" + socket.id);
   socket.on("disconnect", () => {
     console.log("🔥: A user disconnected");
   });

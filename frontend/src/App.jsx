@@ -1,5 +1,5 @@
 import socketIO from "socket.io-client";
-const socket = socketIO.connect("http://localhost:5001");
+const socket = socketIO.connect(import.meta.env.VITE_SERVER_DOMAIN);
 
 console.log(socket);
 export default function App() {
