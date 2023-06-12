@@ -9,7 +9,7 @@ export default function Login() {
 
   return (
     <div className="login_Container">
-      <h2 className="login_header"> Welcome to WHOMAI </h2>
+      <h2 className="login_header"> Welcome to WHOAMI </h2>
       <h4 className="login_subheader"> Whoever you are </h4>
       <button onClick={handleClick} className="login_CTA">
         Sign in with intra
