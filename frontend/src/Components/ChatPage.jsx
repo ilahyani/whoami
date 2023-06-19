@@ -1,3 +1,12 @@
+import ChatSidebar from "./chatComponents/ChatSidebar";
+import ChatBody from "./chatComponents/ChatBody";
+import "../myStyle.css";
+
 export default function ChatPage() {
-  return "Chat hh";
+  return (
+    <div className="chat_container">
+      <ChatSidebar />
+      <ChatBody />
+    </div>
+  );
 }
