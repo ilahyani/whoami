@@ -75,18 +75,14 @@
 }
 .contact_box {
   display: flex;
+  gap: 0.5rem;
   padding: 10px 10px;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  /* justify-content: space-between; */
   border-bottom: 0.5px solid rgb(54, 54, 128);
 }
 .contact_box:hover {
   background-color: rgb(77, 77, 201);
-}
-.chat_details {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
 }
 img {
   width: 40px;
