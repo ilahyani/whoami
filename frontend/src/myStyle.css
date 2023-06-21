@@ -48,6 +48,10 @@
 .chat_sidebar {
   background-color: rgb(111, 111, 224);
   color: white;
+  position: sticky;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
   width: 30%;
   height: 100vh;
 }
@@ -120,7 +124,9 @@ img {
   background-color: rgb(255, 255, 255);
   color: rgb(111, 111, 224);
   padding: 10px 20px;
-  box-shadow: 10px 0px 25px rgb(198, 198, 198);
+  box-shadow: 10px 0px 40px rgba(0, 0, 0, 0.107);
+  position: sticky;
+  top: 0px;
 }
 .icons {
   display: flex;
@@ -171,6 +177,9 @@ img {
 .send_msg {
   background-color: rgb(240, 240, 240);
   padding: 10px 20px;
+  position: sticky;
+  bottom: 0px;
+  width: 70vw;
 }
 .msg_form_input {
   border-style: none;
