@@ -9,7 +9,6 @@ export default function ChatPage({ socket }) {
   useEffect(() => {
     socket.on("messageResponse", (data) => {
       setMessages([...messages, data]);
-      console.log("msg from", data.name);
     });
   }, [socket, messages]);
   return (
