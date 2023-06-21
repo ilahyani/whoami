@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { Server } from "socket.io";
 import cors from "cors";
 
-dotenv.config({ path: "/Users/ilahyani/web/whoami/.env" });
+dotenv.config({ path: "/Users/ilahyani/web/whoami/backend/.env" });
 const port = process.env.PORT;
 
 const app = express();
@@ -18,8 +18,11 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("🔥: A user disconnected");
   });
+  socket.on("message", (data) => {
+    console.log(data);
+    io.emit("messageResponse", data);
+  });
 });
-
 app.get("/", (req, res) => {
   res.send("hello from server");
 });

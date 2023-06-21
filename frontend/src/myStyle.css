@@ -130,6 +130,7 @@ img {
   display: flex;
   padding: 0px 20px;
   gap: 10px;
+  margin-bottom: 5px;
 }
 .outgoing_msg_data {
   display: flex;
@@ -144,7 +145,6 @@ img {
 }
 .incoming_msg_text {
   background-color: rgb(240, 240, 240);
-  /* color: black; */
   border: 0.1px solid black;
   border-radius: 0px 10px 10px 10px;
   width: 600px;
@@ -156,6 +156,7 @@ img {
   display: flex;
   justify-content: flex-end;
   padding: 0px 20px;
+  margin-bottom: 5px;
 }
 .outgoing_msg_text {
   background-color: rgb(127, 127, 239);

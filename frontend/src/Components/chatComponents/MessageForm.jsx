@@ -1,10 +1,17 @@
 import { useState } from "react";
 
-export default function MessageForm() {
+export default function MessageForm({ socket }) {
   const [message, setMessage] = useState("");
-  const handleSumbmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(message, "sent");
+    if (message.trim() && localStorage.getItem("userName")) {
+      socket.emit("message", {
+        text: message,
+        name: localStorage.getItem("userName"),
+        id: `${socket.id}${Math.random()}`,
+        socketID: socket.id,
+      });
+    }
     setMessage("");
   };
   return (
@@ -12,7 +19,7 @@ export default function MessageForm() {
       <form
         className="msg_form"
         onSubmit={(e) => {
-          handleSumbmit(e);
+          handleSubmit(e);
         }}
       >
         <input
