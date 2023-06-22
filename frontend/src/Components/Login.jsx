@@ -7,11 +7,13 @@ function generateRandomUsername() {
   return username;
 }
 
-export default function Login() {
+export default function Login({ socket }) {
+  let username;
   const navigate = useNavigate();
   const handleClick = () => {
-    localStorage.setItem("userName", generateRandomUsername());
-    console.log("UserName", localStorage.getItem("userName"));
+    username = generateRandomUsername();
+    localStorage.setItem("userName", username);
+    socket.emit("newUser", { username, socketID: socket.id }); //add avatar
     navigate("/chat");
   };
 

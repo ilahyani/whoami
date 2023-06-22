@@ -9,7 +9,7 @@ export default function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/" element={<Login socket={socket} />}></Route>
           <Route path="/Chat" element={<ChatPage socket={socket} />}></Route>
         </Routes>
       </div>
