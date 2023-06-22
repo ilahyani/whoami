@@ -172,18 +172,18 @@ img {
 }
 .send_msg {
   background-color: rgb(240, 240, 240);
-  padding: 10px 20px;
+  padding: 10px;
   position: sticky;
   bottom: 0px;
-  width: 70vw;
+  width: auto;
 }
 .msg_form_input {
   border-style: none;
   display: block;
-  margin: 10px auto;
+  margin: 5px auto;
   width: 95%;
   font-size: 16px;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 5px;
   background-color: white;
   color: black;
