@@ -1,18 +1,22 @@
 import ContactList from "./ContactList";
-import { useEffect, useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { SocketContext } from "../App";
 
-export default function ChatSidebar({ socket }) {
+export default function ChatSidebar() {
   const [users, setUsers] = useState([]);
+  const socket = useContext(SocketContext);
   useEffect(() => {
     socket.on("newUserResponse", (data) => {
       setUsers(data);
-      console.log("users", data[data.length - 1]);
+      console.log("users", data);
     });
-  }, [socket, users]);
+    socket.emit("getUsers");
+  }, [socket]);
+
   return (
     <div className="chat_sidebar">
       <div className="chat_sidebar_header">
-        <h1>Active users</h1>
+        <h2>Active users</h2>
       </div>
       <ContactList users={users} socket={socket} />
     </div>

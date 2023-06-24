@@ -28,8 +28,13 @@ io.on("connection", (socket) => {
   });
   socket.on("newUser", (data) => {
     users.push(data);
-    console.log(users);
-    io.emit("newUserResponse", users);
+    console.log("mer7ba");
+    // io.emit("newUserResponse", [...users]);
+  });
+  socket.on("getUsers", () => {
+    // users.push(data);
+    console.log("received");
+    io.emit("newUserResponse", [...users]);
   });
 });
 

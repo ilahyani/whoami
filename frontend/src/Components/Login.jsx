@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { SocketContext } from "./App";
 import "../myStyle.css";
 
 function generateRandomUsername() {
   const randomString = Math.random().toString(10).substring(5);
-  const username = `User${randomString}`;
-  return username;
+  return `User${randomString}`;
 }
 
-export default function Login({ socket }) {
+export default function Login() {
+  const socket = useContext(SocketContext);
   let username;
   const navigate = useNavigate();
   const handleClick = () => {
     username = generateRandomUsername();
     localStorage.setItem("userName", username);
+    console.log("innn");
     socket.emit("newUser", { username, socketID: socket.id }); //add avatar
     navigate("/chat");
   };
