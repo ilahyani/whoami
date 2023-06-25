@@ -8,7 +8,7 @@ export default function ChatSidebar() {
   useEffect(() => {
     socket.on("newUserResponse", (data) => {
       setUsers(data);
-      console.log("users", data);
+      // console.log("newUserResponse", data);
     });
     socket.emit("getUsers");
   }, [socket]);

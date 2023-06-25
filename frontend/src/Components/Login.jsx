@@ -15,7 +15,6 @@ export default function Login() {
   const handleClick = () => {
     username = generateRandomUsername();
     localStorage.setItem("userName", username);
-    console.log("innn");
     socket.emit("newUser", { username, socketID: socket.id }); //add avatar
     navigate("/chat");
   };

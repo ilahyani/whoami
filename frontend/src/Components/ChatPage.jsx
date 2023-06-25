@@ -14,7 +14,7 @@ export default function ChatPage() {
     socket.on("messageResponse", (data) => {
       setMessages([...messages, data]);
     });
-  }, [socket, messages]); //double render because of messages dep
+  }, [socket, messages]);
 
   useEffect(() => {
     lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
