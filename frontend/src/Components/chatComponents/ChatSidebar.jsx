@@ -1,18 +1,10 @@
 import ContactList from "./ContactList";
 import Profile from "./Profile";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { SocketContext } from "../App";
 
-export default function ChatSidebar() {
-  const [users, setUsers] = useState([]);
+export default function ChatSidebar({ users }) {
   const socket = useContext(SocketContext);
-  useEffect(() => {
-    socket.on("newUserResponse", (data) => {
-      setUsers(data);
-      // console.log("newUserResponse", data);
-    });
-    socket.emit("getUsers");
-  }, [socket]);
 
   return (
     <div className="chat_sidebar">

@@ -7,6 +7,7 @@ import "../myStyle.css";
 
 export default function ChatPage() {
   const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
   const lastMessageRef = useRef(null);
   const socket = useContext(SocketContext);
 
@@ -20,14 +21,23 @@ export default function ChatPage() {
     lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    socket.on("newUserResponse", (data) => {
+      setUsers(data);
+      // console.log("newUserResponse", data);
+    });
+    socket.emit("getUsers");
+  }, [socket]);
+
   return (
     <div className="chat_container">
-      <ChatSidebar />
+      <ChatSidebar users={users} />
       <div className="chat_body">
         <ChatBody
           messages={messages}
           socket={socket}
           lastMessageRef={lastMessageRef}
+          users={users}
         />
         <MessageForm socket={socket} />
       </div>

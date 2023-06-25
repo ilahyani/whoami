@@ -4,7 +4,7 @@ import { faUserPlus, faUserMinus } from "@fortawesome/free-solid-svg-icons";
 export default function ChatBodyHeader() {
   return (
     <div className="chat_body_header">
-      <h2>Mugiwara</h2>
+      <h2>Chat</h2>
       <div className="icons">
         <a href="#">
           <FontAwesomeIcon

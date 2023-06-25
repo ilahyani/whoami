@@ -15,7 +15,7 @@ export default function Login() {
       const avatarSrc = `https://api.dicebear.com/6.x/adventurer/svg?seed=${username}`;
       localStorage.setItem("userName", username);
       socket.emit("newUser", {
-        username,
+        username: username,
         socketID: socket.id,
         avatar: avatarSrc,
       });
