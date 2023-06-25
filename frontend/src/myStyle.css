@@ -19,20 +19,20 @@
   height: 100vh;
 }
 .login_header {
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 .login_subheader {
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
   color: whitesmoke;
   font-weight: lighter;
-  font-size: 25px;
+  font-size: 1.5625rem;
 }
 .login_CTA {
   border-style: none;
   color: white;
   background-color: #36454f;
-  padding: 7px 25px;
-  border-radius: 20px;
+  padding: 0.4375rem 1.5625rem;
+  border-radius: 1.25rem;
   cursor: pointer;
 }
 .login_CTA:hover {
@@ -56,14 +56,14 @@
   height: 100vh;
 }
 .chat_sidebar_header {
-  padding: 20px 10px;
+  padding: 1.25rem 0.625rem;
 }
 .search_bar_input {
   border-style: none;
   display: block;
-  margin: 10px auto;
+  margin: 0.625rem auto;
   width: 80%;
-  padding: 5px 10px;
+  padding: 0.3125rem 0.625rem;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.232);
   color: white;
@@ -76,7 +76,7 @@
 .contact_box {
   display: flex;
   gap: 0.5rem;
-  padding: 10px 10px;
+  padding: 0.4375rem 0.625rem;
   align-items: center;
   /* justify-content: space-between; */
   border-bottom: 0.5px solid rgb(54, 54, 128);
@@ -85,26 +85,23 @@
   background-color: rgb(77, 77, 201);
 }
 img {
-  width: 40px;
+  width: 2.5rem;
   height: auto;
-  border: 0.05px solid black;
+  border: 0.5px solid black;
   border-radius: 50%;
   vertical-align: middle;
 }
 .avatar {
-  width: 50px;
+  width: 3.125rem;
   height: auto;
 }
 .username {
   font-weight: bold;
-  padding-bottom: 4px;
+  padding-bottom: 0.25rem;
 }
-.latestMsg {
-  font-size: 12px;
-  font-weight: lighter;
-}
+.latestMsg,
 .chat_date {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: lighter;
 }
 .chat_body {
@@ -119,8 +116,8 @@ img {
   align-items: center;
   background-color: rgb(255, 255, 255);
   color: rgb(111, 111, 224);
-  padding: 10px 20px;
-  box-shadow: 10px 0px 40px rgba(0, 0, 0, 0.107);
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0.625rem 0px 2.5rem rgba(0, 0, 0, 0.107);
   position: sticky;
   top: 0px;
 }
@@ -130,9 +127,9 @@ img {
 }
 .incoming_msg {
   display: flex;
-  padding: 0px 20px;
-  gap: 10px;
-  margin-bottom: 5px;
+  padding: 0px 1.25rem;
+  gap: 0.625rem;
+  margin-bottom: 0.3125rem;
 }
 .outgoing_msg_data {
   display: flex;
@@ -148,31 +145,31 @@ img {
 .incoming_msg_text {
   background-color: rgb(240, 240, 240);
   border: 0.1px solid black;
-  border-radius: 0px 10px 10px 10px;
-  width: 600px;
+  border-radius: 0px 0.625rem 0.625rem 0.625rem;
+  width: 37.5rem;
   height: auto;
-  padding: 10px;
-  margin-bottom: 5px;
+  padding: 0.625rem;
+  margin-bottom: 0.3125rem;
 }
 .outgoing_msg {
   display: flex;
   justify-content: flex-end;
-  padding: 0px 20px;
-  margin-bottom: 5px;
+  padding: 0px 1.25rem;
+  margin-bottom: 0.3125rem;
 }
 .outgoing_msg_text {
   background-color: rgb(127, 127, 239);
   color: white;
   border: 0.1px solid black;
-  border-radius: 10px 10px 0px 10px;
-  width: 600px;
+  border-radius: 0.625rem 0.625rem 0px 0.625rem;
+  width: 37.5rem;
   height: auto;
-  padding: 10px;
-  margin-bottom: 5px;
+  padding: 0.625rem;
+  margin-bottom: 0.3125rem;
 }
 .send_msg {
   background-color: rgb(240, 240, 240);
-  padding: 10px;
+  padding: 0.625rem;
   position: sticky;
   bottom: 0px;
   width: auto;
@@ -180,22 +177,22 @@ img {
 .msg_form_input {
   border-style: none;
   display: block;
-  margin: 5px auto;
+  margin: 0.3125rem auto;
   width: 95%;
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
   background-color: white;
   color: black;
 }
 
 .username_form_input {
   border-style: none;
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
   width: 100%;
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 25px;
+  font-size: 1rem;
+  padding: 0.625rem;
+  border-radius: 1.5625rem;
   background-color: rgb(56, 56, 56);
   color: white;
   text-align: center;
