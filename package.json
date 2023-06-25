@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@dicebear/collection": "^6.0.4",
+    "@dicebear/core": "^6.0.4",
+    "avataaars": "^2.0.0",
+    "react-nice-avatar": "^1.4.1"
+  }
+}

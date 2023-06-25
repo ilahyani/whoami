@@ -188,3 +188,15 @@ img {
   background-color: white;
   color: black;
 }
+
+.username_form_input {
+  border-style: none;
+  margin-bottom: 25px;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: rgb(56, 56, 56);
+  color: white;
+  text-align: center;
+}

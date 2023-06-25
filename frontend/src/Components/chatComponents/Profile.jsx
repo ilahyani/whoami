@@ -1,8 +1,8 @@
-export default function ContactList({ users, socket }) {
+export default function Profile({ users, socket }) {
   return (
     <div className="contact_list" key={socket.id}>
       {users.map((user) => {
-        if (socket.id !== user.socketID)
+        if (socket.id === user.socketID)
           return (
             <div className="contact_box" key={user.socketID}>
               <div className="avatar">
