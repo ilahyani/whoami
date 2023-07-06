@@ -58,16 +58,6 @@
 .chat_sidebar_header {
   padding: 1.25rem 0.625rem;
 }
-.search_bar_input {
-  border-style: none;
-  display: block;
-  margin: 0.625rem auto;
-  width: 80%;
-  padding: 0.3125rem 0.625rem;
-  border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.232);
-  color: white;
-}
 .contact_list {
   padding: 0;
   margin: 0;
@@ -102,6 +92,10 @@ img {
 .latestMsg,
 .chat_date {
   font-size: 0.75rem;
+  font-weight: lighter;
+}
+.no_users {
+  padding: 0rem 0.625rem;
   font-weight: lighter;
 }
 .chat_body {
