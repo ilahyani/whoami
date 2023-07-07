@@ -24,7 +24,6 @@ export default function ChatPage() {
   useEffect(() => {
     socket.on("newUserResponse", (data) => {
       setUsers(data);
-      // console.log("newUserResponse", data);
     });
     socket.emit("getUsers");
   }, [socket]);

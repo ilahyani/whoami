@@ -28,12 +28,8 @@ io.on("connection", (socket) => {
   });
   socket.on("newUser", (data) => {
     users.push(data);
-    // console.log("newUser");
-    // io.emit("newUserResponse", [...users]);
   });
   socket.on("getUsers", () => {
-    // users.push(data);
-    // console.log("getUsers");
     io.emit("newUserResponse", [...users]);
   });
 });

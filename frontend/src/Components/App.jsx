@@ -5,7 +5,6 @@ import ChatPage from "./ChatPage";
 import React from "react";
 
 const socket = socketIO.connect(import.meta.env.VITE_SERVER_DOMAIN);
-// console.log(socket);
 export const SocketContext = React.createContext();
 export default function App() {
   return (

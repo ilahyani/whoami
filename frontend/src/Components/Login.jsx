@@ -11,8 +11,9 @@ export default function Login() {
   const handleClick = (e) => {
     e.preventDefault();
     if (username.trim()) {
-      // const username = generateRandomUsername();
-      const avatarSrc = `https://api.dicebear.com/6.x/adventurer/svg?seed=${username}`;
+      const avatarSrc = `https://api.dicebear.com/6.x/adventurer/svg?seed=${
+        username + Math.random().toString().substring(2)
+      }`;
       localStorage.setItem("userName", username);
       socket.emit("newUser", {
         username: username,
