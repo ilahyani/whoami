@@ -3,11 +3,16 @@ import ChatSidebar from "./chatComponents/ChatSidebar";
 import ChatBody from "./chatComponents/ChatBody";
 import MessageForm from "./chatComponents/MessageForm";
 import { SocketContext } from "./App";
+import { Navigate } from "react-router-dom";
 import "../myStyle.css";
 
 export default function ChatPage() {
   const [messages, setMessages] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(
+    localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : []
+  );
   const lastMessageRef = useRef(null);
   const socket = useContext(SocketContext);
 
@@ -22,11 +27,15 @@ export default function ChatPage() {
   }, [messages]);
 
   useEffect(() => {
+    socket.emit("getUsers");
     socket.on("newUserResponse", (data) => {
       setUsers(data);
     });
-    socket.emit("getUsers");
   }, [socket]);
+
+  if (!users.find((user) => user.socketID === socket.id)) {
+    return <Navigate to="/" replace={true} />;
+  }
 
   return (
     <div className="chat_container">
@@ -36,7 +45,11 @@ export default function ChatPage() {
           messages={messages}
           socket={socket}
           lastMessageRef={lastMessageRef}
-          users={users}
+          users={
+            localStorage.getItem("users")
+              ? JSON.parse(localStorage.getItem("users"))
+              : users
+          }
         />
         <MessageForm socket={socket} />
       </div>

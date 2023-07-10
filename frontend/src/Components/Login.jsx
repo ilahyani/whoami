@@ -14,12 +14,19 @@ export default function Login() {
       const avatarSrc = `https://api.dicebear.com/6.x/adventurer/svg?seed=${
         username + Math.random().toString().substring(2)
       }`;
-      localStorage.setItem("userName", username);
-      socket.emit("newUser", {
+      const newUser = {
         username: username,
         socketID: socket.id,
         avatar: avatarSrc,
-      });
+      };
+      const availableUsers = localStorage.getItem("users")
+        ? JSON.parse(localStorage.getItem("users"))
+        : [];
+      localStorage.setItem(
+        "users",
+        JSON.stringify([...availableUsers, newUser])
+      );
+      socket.emit("newUser", newUser);
       navigate("/chat");
     }
   };

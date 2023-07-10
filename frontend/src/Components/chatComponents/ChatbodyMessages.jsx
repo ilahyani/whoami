@@ -14,7 +14,7 @@ export default function ChatBodyMessages({ messages, socket, users }) {
             <div className="avatar">
               <img
                 src={
-                  users?.find((user) => user.socketID === msg.socketID).avatar
+                  users?.find((user) => user.socketID === msg.socketID)?.avatar
                 }
                 alt="avatar"
               />
