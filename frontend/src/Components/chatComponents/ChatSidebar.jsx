@@ -10,7 +10,7 @@ export default function ChatSidebar({ users }) {
     <div className="chat_sidebar">
       <Profile users={users} socket={socket} />
       <div className="chat_sidebar_header">
-        <h2>Active users</h2>
+        <h4>Active users</h4>
       </div>
       <ContactList users={users} socket={socket} />
     </div>

@@ -4,7 +4,7 @@ export default function MessageForm({ socket }) {
   const [message, setMessage] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (message.trim() && localStorage.getItem("userName")) {
+    if (message.trim()) {
       socket.emit("message", {
         text: message,
         name: localStorage.getItem("userName"),

@@ -4,10 +4,7 @@ export default function ChatBodyMessages({ messages, socket, users }) {
       {messages.map((msg) =>
         msg.socketID === socket.id ? (
           <div className="outgoing_msg" key={msg.id}>
-            <div className="outgoing_msg_data">
-              <div className="outgoing_msg_text">{msg.text}</div>
-              <div className="chat_date">Apr 15</div>
-            </div>
+            <div className="outgoing_msg_text">{msg.text}</div>
           </div>
         ) : (
           <div className="incoming_msg" key={msg.id}>
@@ -21,7 +18,6 @@ export default function ChatBodyMessages({ messages, socket, users }) {
             </div>
             <div className="incoming_msg_data">
               <div className="incoming_msg_text">{msg.text}</div>
-              <div className="chat_date">Apr 14</div>
             </div>
           </div>
         )
