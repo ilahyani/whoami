@@ -19,7 +19,7 @@
   height: 100vh;
 }
 .login_header {
-  font-size: 3.75rem;
+  font-size: 2.4rem;
 }
 .login_subheader {
   padding-bottom: 1.25rem;
@@ -143,6 +143,8 @@ img {
   height: auto;
   padding: 0.625rem;
   margin-bottom: 0.3125rem;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .outgoing_msg {
   display: flex;
@@ -159,6 +161,8 @@ img {
   height: auto;
   padding: 0.625rem;
   margin-bottom: 0.3125rem;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .send_msg {
   background-color: rgb(240, 240, 240);
