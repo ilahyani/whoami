@@ -15,15 +15,12 @@ app.use(cors);
 let users = [];
 const io = new Server(httpServer, { cors: process.env.CLIENT_DOMAIN });
 io.on("connection", (socket) => {
-  // console.log(`⚡: ${socket.id} user just connected!`);
   socket.on("disconnect", () => {
-    // console.log("🔥: A user disconnected");
     users = users.filter((user) => user.socketID !== socket.id);
     io.emit("newUserResponse", users);
     socket.disconnect();
   });
   socket.on("message", (data) => {
-    // console.log(data);
     io.emit("messageResponse", data);
   });
   socket.on("newUser", (data) => {
