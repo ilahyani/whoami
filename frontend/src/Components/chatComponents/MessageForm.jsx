@@ -1,13 +1,16 @@
 import { useState } from "react";
 
 export default function MessageForm({ socket }) {
+  const user = JSON.parse(localStorage.getItem("users"));
+  const { username, avatar } = user[0];
   const [message, setMessage] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim()) {
       socket.emit("message", {
         text: message,
-        name: localStorage.getItem("userName"),
+        name: username,
+        avatar: avatar,
         id: `${socket.id}${Math.random()}`,
         socketID: socket.id,
       });

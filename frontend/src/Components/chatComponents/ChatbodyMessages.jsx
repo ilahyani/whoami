@@ -1,4 +1,5 @@
 export default function ChatBodyMessages({ messages, socket, users }) {
+  console.log(users, messages);
   return (
     <div className="chatBodyMessages">
       {messages.map((msg) =>
@@ -9,12 +10,7 @@ export default function ChatBodyMessages({ messages, socket, users }) {
         ) : (
           <div className="incoming_msg" key={msg.id}>
             <div className="avatar">
-              <img
-                src={
-                  users?.find((user) => user.socketID === msg.socketID)?.avatar
-                }
-                alt="avatar"
-              />
+              <img src={msg.avatar} alt="avatar" />
             </div>
             <div className="incoming_msg_data">
               <div className="incoming_msg_text">{msg.text}</div>
