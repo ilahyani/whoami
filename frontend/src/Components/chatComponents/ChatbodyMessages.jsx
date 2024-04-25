@@ -1,5 +1,8 @@
-export default function ChatBodyMessages({ messages, socket, users }) {
-  console.log(users, messages);
+import { SocketContext } from "../App";
+import { useContext } from "react";
+
+export default function ChatBodyMessages({ messages }) {
+  const socket = useContext(SocketContext);
   return (
     <div className="chatBodyMessages">
       {messages.map((msg) =>

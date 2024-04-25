@@ -19,10 +19,10 @@ export default function Login() {
         socketID: socket.id,
         avatar: avatarSrc,
       };
-      const availableUsers = localStorage.getItem("users")
-        ? JSON.parse(localStorage.getItem("users"))
+      const availableUsers = sessionStorage.getItem("users")
+        ? JSON.parse(sessionStorage.getItem("users"))
         : [];
-      localStorage.setItem(
+      sessionStorage.setItem(
         "users",
         JSON.stringify([...availableUsers, newUser])
       );

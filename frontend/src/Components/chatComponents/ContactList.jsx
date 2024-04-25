@@ -1,4 +1,9 @@
-export default function ContactList({ users, socket }) {
+import { useContext } from "react";
+import { SocketContext } from "../App";
+
+export default function ContactList({ users }) {
+  const socket = useContext(SocketContext);
+
   if (users?.length <= 1)
     return (
       <div className="no_users">

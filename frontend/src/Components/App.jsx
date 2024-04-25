@@ -10,12 +10,12 @@ export default function App() {
   return (
     <SocketContext.Provider value={socket}>
       <BrowserRouter>
-        <div>
-          <Routes>
-            <Route path="/" element={<Login />}></Route>
-            <Route path="/Chat" element={<ChatPage />}></Route>
-          </Routes>
-        </div>
+        {/* <div> */}
+        <Routes>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="/Chat" element={<ChatPage />}></Route>
+        </Routes>
+        {/* </div> */}
       </BrowserRouter>
     </SocketContext.Provider>
   );

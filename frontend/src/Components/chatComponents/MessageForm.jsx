@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SocketContext } from "../App";
 
-export default function MessageForm({ socket }) {
-  const user = JSON.parse(localStorage.getItem("users"));
-  const { username, avatar } = user[0];
+export default function MessageForm() {
   const [message, setMessage] = useState("");
+  const user = JSON.parse(sessionStorage.getItem("users"));
+  const { username, avatar } = user[0];
+  const socket = useContext(SocketContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim()) {

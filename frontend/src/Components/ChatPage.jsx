@@ -9,12 +9,16 @@ import "../myStyle.css";
 export default function ChatPage() {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState(
-    localStorage.getItem("users")
-      ? JSON.parse(localStorage.getItem("users"))
+    sessionStorage.getItem("users")
+      ? JSON.parse(sessionStorage.getItem("users"))
       : []
   );
   const lastMessageRef = useRef(null);
   const socket = useContext(SocketContext);
+
+  window.onbeforeunload = function () {
+    sessionStorage.clear();
+  };
 
   useEffect(() => {
     socket.on("messageResponse", (data) => {
@@ -41,17 +45,8 @@ export default function ChatPage() {
     <div className="chat_container">
       <ChatSidebar users={users} />
       <div className="chat_body">
-        <ChatBody
-          messages={messages}
-          socket={socket}
-          lastMessageRef={lastMessageRef}
-          users={
-            localStorage.getItem("users")
-              ? JSON.parse(localStorage.getItem("users"))
-              : users
-          }
-        />
-        <MessageForm socket={socket} />
+        <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
+        <MessageForm />
       </div>
     </div>
   );
