@@ -21,11 +21,32 @@ export default function ChatPage() {
   };
 
   useEffect(() => {
-    socket.on("messageResponse", (data) => {
-      setMessages([...messages, data]);
-    });
+    const fetchMessages = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_SERVER_DOMAIN}/messages/get`
+        );
+        const history = await res.json();
+        setMessages(history);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchMessages();
     lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [socket, messages]);
+  }, []);
+
+  useEffect(() => {
+    socket.on("messageResponse", (data) => {
+      setMessages((msgs) => {
+        return msgs.concat(data);
+      });
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   useEffect(() => {
     socket.emit("getUsers");
