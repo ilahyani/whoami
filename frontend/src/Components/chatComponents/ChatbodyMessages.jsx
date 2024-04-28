@@ -16,6 +16,7 @@ export default function ChatBodyMessages({ messages }) {
               <img src={msg.avatar} alt="avatar" />
             </div>
             <div className="incoming_msg_data">
+              <div className="username">{msg.name}</div>
               <div className="incoming_msg_text">{msg.text}</div>
             </div>
           </div>
