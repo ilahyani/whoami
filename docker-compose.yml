@@ -6,6 +6,4 @@ services:
       - 6379:6379
     env_file:
       - backend/.env
-    networks:
-      - whoami
     restart: on-failure
