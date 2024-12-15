@@ -1,0 +1,37 @@
+- name: Create Security Group For Backend
+  ec2_group:
+    name: "Node-sg"
+    description: "Security Group For Nodejs Backend"
+    region: "{{ region }}"
+    state: present
+    rules:
+      - proto: tcp
+        ports: "{{ nodejs_ports }}"
+        # group_id: "{{ reactjs_sg.group_id }}" # Allow only frontend
+        cidr_ip: "{{ security_group_cidr_ingress }}"
+    rules_egress:
+      - proto: all
+        cidr_ip: "{{ security_group_cidr_egress }}"
+  register: nodejs_sg
+
+- name: Launch Backend Instance
+  ec2_instance:
+    name: "Backend"
+    instance_type: "{{ instance_type }}"
+    region: "{{ region }}"
+    image_id: "{{ ami_id }}"
+    wait: yes
+    security_groups: ["{{ nodejs_sg.group_id }}"]
+    key_name: "{{ key_name }}"
+  register: back_instance
+
+- name: inspect back_instance IP
+  debug:
+    var: back_instance.instances[0].public_ip_address
+
+- name: Add Backend Instance to Inventory
+  add_host:
+    name: backend
+    ansible_host: "{{ back_instance.instances[0].public_ip_address }}"
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: "{{ key_path }}"

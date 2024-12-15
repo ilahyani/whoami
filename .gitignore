@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 style.css
 .DS_Store
+*.pem
+.env
+.terraform

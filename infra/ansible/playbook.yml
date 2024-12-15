@@ -1,0 +1,73 @@
+############################################# THIS SHOULD BE DONE WITH TERRAFORM 
+# - name: Create EC2 and necessary resources
+#   hosts: localhost
+#   gather_facts: no
+#   vars:
+#     region: us-east-1
+#     instance_type: t2.micro
+#     ami_id: ami-0e2c8caa4b6378d8c
+#     security_group_cidr_ingress: 0.0.0.0/0
+#     security_group_cidr_egress: 0.0.0.0/0
+#     nodejs_ports: [5001, 22]
+#     reactjs_ports: [5173, 22]
+#     redis_ports: [6379, 22]
+#     key_path: "{{ playbook_dir }}/{{ key_name }}.pem"
+#     key_name: key-pair
+#   tasks:
+#     - name: Create AWS Key Pair
+#       amazon.aws.ec2_key:
+#         name: "{{ key_name }}"
+#         region: "{{ region }}"
+#         state: present
+#       register: key_result
+    
+#     - name: Save Key
+#       copy:
+#         content: "{{ key_result.key.private_key }}"
+#         dest: "{{ key_path }}"
+#         mode: '0600'
+#       when: key_result.key.private_key is defined
+    
+#     - name: frontend setup
+#       import_tasks: ec2_front_instance.yml
+    
+#     - name: backend setup
+#       import_tasks: ec2_back_instance.yml
+    
+#     - name: redis setup
+#       import_tasks: ec2_redis_instance.yml
+
+- name: Frontend Instance Configuration
+  hosts: frontend 
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+        update_cache: yes
+
+    - name: Copy Files
+      synchronize:
+        src: "{{ playbook_dir }}/../../frontend/"
+        dest: /home/ubuntu/app/
+
+    - name: Build Docker image
+      docker_image:
+        name: frontend_image
+        source: build
+        build:
+          path: /home/ubuntu/app
+        state: present
+
+    - name: Run Docker container
+      docker_container:
+        name: frontend_container
+        image: frontend_image
+        state: started
+        restart_policy: always
+        ports:
+          - "5173:5173" 
+        detach: yes
