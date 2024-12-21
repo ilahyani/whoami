@@ -6,10 +6,6 @@ variable "instance_type" {
     type = string
 }
 
-# variable "vpc_sg_id" {
-#     type = string
-# }
-
 variable "key_name" {
     type = string
 }
