@@ -1,0 +1,40 @@
+- name: Frontend Instance Configuration
+  hosts: frontend
+  become: true
+  gather_facts: no
+  tasks:
+    - name: Install Docker
+      apt:
+        name:
+          - docker.io
+        state: present
+        update_cache: yes
+
+    - name: Copy Files
+      synchronize:
+        src: "{{ playbook_dir }}/../../../frontend/"
+        dest: /home/ubuntu/app/
+
+    - name: Build Frontend Docker image
+      docker_image:
+        name: frontend_image
+        source: build
+        build:
+          path: /home/ubuntu/app
+        state: present
+
+    - name: Remove existing Frontend container if it exists
+      docker_container:
+        name: frontend_container
+        state: absent
+
+    - name: Run Frontend Docker container
+      docker_container:
+        name: frontend_container
+        image: frontend_image
+        state: started
+        restart_policy: always
+        ports:
+          - "5173:5173"
+        env:
+          VITE_SERVER_DOMAIN: http://{{ hostvars[groups['backend'][0]]['inventory_hostname'] }}:5001

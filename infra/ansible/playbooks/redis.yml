@@ -1,0 +1,26 @@
+- name: Redis Instance Configuration
+  hosts: redis
+  become: true
+  gather_facts: no
+  tasks:
+    - name: Install Docker
+      apt:
+        name:
+          - docker.io
+        state: present
+        update_cache: yes
+    
+    - name: Remove existing Redis container if it exists
+      docker_container:
+        name: redis_container
+        state: absent
+
+    - name: Run Redis Docker Container
+      docker_container:
+        name: redis_container
+        image: redis:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "6379:6379"
+        command: ["redis-server", "--protected-mode", "no", "--bind", "0.0.0.0"]

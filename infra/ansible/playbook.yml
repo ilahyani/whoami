@@ -1,0 +1,3 @@
+- import_playbook: playbooks/redis.yml
+- import_playbook: playbooks/backend.yml
+- import_playbook: playbooks/frontend.yml

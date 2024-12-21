@@ -12,11 +12,20 @@ const app = express();
 const httpServer = createServer(app);
 const redis = new Redis(process.env.REDIS_URL);
 
+redis.on('connect', () => {
+  console.log('Connected to Redis');
+});
+
+redis.on('error', (err) => {
+  console.error('Redis connection error:', err);
+});
+
 app.use(cors());
 
 let users = [];
 const io = new Server(httpServer, { cors: process.env.CLIENT_DOMAIN });
 io.on("connection", (socket) => {
+  console.log('Socket Connected');
   socket.on("disconnect", () => {
     users = users.filter((user) => user.socketID !== socket.id);
     io.emit("newUserResponse", users);

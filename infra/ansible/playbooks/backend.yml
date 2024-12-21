@@ -1,0 +1,43 @@
+- name: Backend Instance Configuration
+  hosts: backend 
+  become: true
+  gather_facts: no
+  tasks:
+    - name: Install Docker
+      apt:
+        name:
+          - docker.io
+        state: present
+        update_cache: yes
+
+    - name: Copy Files
+      synchronize:
+        src: "{{ playbook_dir }}/../../../backend/"
+        dest: /home/ubuntu/app/
+
+    - name: Build Backend Docker image
+      docker_image:
+        name: backend_image
+        source: build
+        build:
+          path: /home/ubuntu/app
+        state: present
+
+    - name: Remove existing Backend container if it exists
+      docker_container:
+        name: backend_container
+        state: absent
+
+    - name: Run Backend Docker container
+      docker_container:
+        name: backend_container
+        image: backend_image
+        state: started
+        restart_policy: always
+        ports:
+          - "5001:5001"
+          - "6379:6379"
+        env:
+          PORT: "5001"
+          CLIENT_DOMAIN: http://{{ hostvars[groups['frontend'][0]]['inventory_hostname'] }}:5173
+          REDIS_URL: redis://{{ hostvars[groups['redis'][0]]['inventory_hostname'] }}:6379
