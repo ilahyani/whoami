@@ -3,8 +3,8 @@ resource "tls_private_key" "ssh_key_pair" {
   rsa_bits = 4096
 }
 
-resource "aws_key_pair" "front_key" {
-  key_name = "front_key"
+resource "aws_key_pair" "key" {
+  key_name = "key"
   public_key = tls_private_key.ssh_key_pair.public_key_openssh
 }
 
